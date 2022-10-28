@@ -16,9 +16,7 @@ pipeline {
             }
           }
         }
-      }
-    }
-    stage('Static Analysis') {
+     stage('Static Analysis') {
       parallel {
         stage('Unit Tests') {
           steps {
@@ -27,7 +25,6 @@ pipeline {
             }
           }
         }
-      }
         stage('Generate SBOM') {
          steps {
          container('maven') {
@@ -106,3 +103,4 @@ pipeline {
     }
    }
 }
+
