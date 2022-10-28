@@ -43,7 +43,8 @@ pipeline {
                  onlyIfSuccessful: true
                } 
             }
-          }
+         
+         
         }
        }
         stage('SCA') {
@@ -77,7 +78,7 @@ pipeline {
      
      
     }
-  }
+  
     stage('Package') {
       parallel {
         stage('Create Jarfile') {
@@ -103,5 +104,6 @@ pipeline {
         sh "echo done"
       }
     }
-}
+  }
+
 }
