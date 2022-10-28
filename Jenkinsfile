@@ -27,12 +27,12 @@ pipeline {
             }
           }
         }
+      }
         stage('Generate SBOM') {
          steps {
          container('maven') {
            sh 'mvn org.cyclonedx:cyclonedx-maven-plugin:makeAggregateBom'
             }
-           }
            post {
              success {
                dependencyTrackPublisher projectName:
@@ -75,9 +75,8 @@ pipeline {
                 }
             }
         }
-     
-     
     }
+     
   
     stage('Package') {
       parallel {
@@ -103,7 +102,7 @@ pipeline {
         // TODO
         sh "echo done"
       }
+   
     }
-  }
-
+   }
 }
