@@ -42,6 +42,7 @@ pipeline {
                  onlyIfSuccessful: true
                } 
             }
+         }
           
         }
         stage('SCA') {
@@ -103,5 +104,4 @@ pipeline {
    
      }
    }
-}
 }
