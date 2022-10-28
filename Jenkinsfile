@@ -16,6 +16,8 @@ pipeline {
             }
           }
         }
+      }
+    }
      stage('Static Analysis') {
       parallel {
         stage('Unit Tests') {
@@ -40,10 +42,8 @@ pipeline {
                  onlyIfSuccessful: true
                } 
             }
-         
-         
+          
         }
-       }
         stage('SCA') {
           steps {
          container('maven') {
@@ -73,6 +73,7 @@ pipeline {
             }
         }
     }
+    }
      
   
     stage('Package') {
@@ -100,7 +101,7 @@ pipeline {
         sh "echo done"
       }
    
-    }
+     }
    }
 }
-
+}
