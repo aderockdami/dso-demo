@@ -29,9 +29,8 @@ pipeline {
         }
         stage('Generate SBOM') {
          steps {
-        container('maven') {
-          sh 'mvn
-        org.cyclonedx:cyclonedx-maven-plugin:makeAggregateBom'
+         container('maven') {
+           sh 'mvn org.cyclonedx:cyclonedx-maven-plugin:makeAggregateBom'
             }
            }
            post {
@@ -48,9 +47,9 @@ pipeline {
         }
         stage('SCA') {
           steps {
-           container('maven') {
+         container('maven') {
              catchError(buildResult: 'SUCCESS', stageResult:'FAILURE') {
-                sh 'mvn org.owasp:dependency-check-maven:check'
+             sh 'mvn org.owasp:dependency-check-maven:check'
             }
          }
        }
@@ -104,5 +103,4 @@ pipeline {
         sh "echo done"
       }
     }
-  }
 }
