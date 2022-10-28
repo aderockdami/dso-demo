@@ -32,6 +32,7 @@ pipeline {
          container('maven') {
            sh 'mvn org.cyclonedx:cyclonedx-maven-plugin:makeAggregateBom'
             }
+         }
            post {
              success {
                dependencyTrackPublisher projectName:
@@ -43,7 +44,6 @@ pipeline {
                } 
             }
          }
-        }
         stage('SCA') {
           steps {
          container('maven') {
