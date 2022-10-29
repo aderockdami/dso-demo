@@ -5,7 +5,7 @@ COPY . .
 RUN mvn package -DskipTests
 
 
-FROM openjdk:20-slim-buster AS RUN
+FROM maven:3.6-jdk-8 AS RUN
 WORKDIR /run
 COPY --from=BUILD /app/target/demo-0.0.1-SNAPSHOT.jar demo.jar
 ARG USER=devops
