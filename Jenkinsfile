@@ -35,12 +35,12 @@ pipeline {
          }
            post {
              success {
-               dependencyTrackPublisher projectName:
+              // dependencyTrackPublisher projectName:
             'sample-spring-app', projectVersion: '0.0.1', artifact:
             'target/bom.xml', autoCreateProjects: true, synchronous: true
-                  archiveArtifacts allowEmptyArchive: true,
-            artifacts: 'target/bom.xml', fingerprint: true,
-            onlyIfSuccessful: true
+                archiveArtifacts allowEmptyArchive: true,
+                 artifacts: 'target/bom.xml', fingerprint: true,
+                 onlyIfSuccessful: true
                } 
             }
          }
