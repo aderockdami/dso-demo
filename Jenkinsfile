@@ -1,5 +1,4 @@
 pipeline {
-  agent any
   environment {
     ARGO_SERVER = '35.189.26.28:32484'
      DEV_URL = 'http://35.189.26.28:30080/'
@@ -167,3 +166,4 @@ pipeline {
    }
   }
 }
+
