@@ -16,6 +16,7 @@ stages {
       steps {
         container('alpine') {
  
+         sh "apt-get update && apt-get install -y"
          sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh" 
          
       }
