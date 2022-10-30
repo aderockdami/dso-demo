@@ -14,7 +14,7 @@ pipeline {
 stages {
     stage('install Spectral') {
       steps {
-        container('maven') {
+        container('alpine') {
  
          sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh" 
          
@@ -23,7 +23,7 @@ stages {
     }
     stage('Spectral Deep Scan') {
       steps {
-        container('maven') {
+        container('alpine') {
         sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit,iac"
       }
     }
