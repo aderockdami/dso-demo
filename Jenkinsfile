@@ -24,7 +24,7 @@ stages {
     }
     stage('Spectral Deep Scan') {
       steps {
-        sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit,iac"
+        sh "SPECTRAL_DSN=https://spu-b807c521954f4fa6b011c8fdb904fded@get.spectralops.io $HOME/.spectral/spectral github -k repo -t [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] [https://github.com/aderockdami/dso-demo.git] --include-tags base,audit3,iac"
     }
     }
     stage('Build') {
@@ -173,4 +173,3 @@ stages {
    }
   }
 }
-
