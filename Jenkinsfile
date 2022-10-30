@@ -2,7 +2,7 @@ pipeline {
   environment {
     ARGO_SERVER = '35.189.26.28:32484'
      DEV_URL = 'http://35.189.26.28:30080/'
-     SPECTRAL_DSN ='https://spu-b807c521954f4fa6b011c8fdb904fded@get.spectralops.io'
+     SPECTRAL_DSN = credentials('spectral-dsn')
   }
   agent {
     kubernetes {
