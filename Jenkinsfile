@@ -17,12 +17,11 @@ pipeline {
         sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh"
       }
     }
-    stage('scan for issues') {
+    stage('Spectral Scan) {
       steps {
-        sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit3,iac"
+        sh "scan --ok --include-tags base,audit3,iac"
       }
     }
-    
     stage('Build') {
       parallel {
         stage('Compile') {
@@ -169,4 +168,3 @@ pipeline {
    }
   }
 }
-
