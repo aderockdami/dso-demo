@@ -23,7 +23,7 @@ stages {
     stage('Spectral Deep Scan') {
       steps {
         container('alpine') {
-        sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit,iac"
+        sh "scan --ok --include-tags base,audit,iac"
       }
     }
     }
