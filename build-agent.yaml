@@ -4,18 +4,18 @@ metadata:
   labels:
     app: spring-build-ci
 spec:
+    
   containers:
-    - name: alpine
-      image: alpine
+    - name: maven
+      image: maven:alpine
       command:
         - cat
       tty: true
       volumeMounts:
         - name: m2
           mountPath: /root/.m2/
-  containers:
-    - name: maven
-      image: maven:alpine
+    - name: alpine
+      image: alpine
       command:
         - cat
       tty: true
