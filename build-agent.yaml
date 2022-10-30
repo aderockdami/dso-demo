@@ -4,7 +4,6 @@ metadata:
   labels:
     app: spring-build-ci
 spec:
-    
   containers:
     - name: maven
       image: maven:alpine
