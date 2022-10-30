@@ -24,10 +24,8 @@ stages {
     }
     stage('Spectral Deep Scan') {
       steps {
-        container('alpine') {
         sh "sudo -s"
         sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit,iac"
-      }
     }
     }
     stage('Build') {
