@@ -2,6 +2,7 @@ pipeline {
   environment {
     ARGO_SERVER = '35.189.26.28:32484'
      DEV_URL = 'http://35.189.26.28:30080/'
+     SPECTRAL_DSN = credentials('https://spu-b807c521954f4fa6b011c8fdb904fded@get.spectralops.io')
   }
   agent {
     kubernetes {
@@ -11,6 +12,17 @@ pipeline {
     }
   }
   stages {
+    stage('install Spectral') {
+      steps {
+        sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh"
+      }
+    }
+    stage('scan for issues') {
+      steps {
+        sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit3,iac"
+      }
+    }
+    
     stage('Build') {
       parallel {
         stage('Compile') {
