@@ -14,7 +14,7 @@ spec:
         - name: m2
           mountPath: /root/.m2/
     - name: alpine
-      image: ubuntu:latest
+      image: ubuntu:focal
       command:
         - cat
       tty: true
