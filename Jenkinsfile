@@ -120,7 +120,7 @@ pipeline {
     stage('Image Scan') {
           steps {
             container('docker-tools') {
-              sh 'trivy image --exit-code aderock/dsodemo'
+              sh 'trivy image aderock/dsodemo'
               }
             }     
           }
