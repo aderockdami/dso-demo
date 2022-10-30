@@ -1,4 +1,5 @@
 pipeline {
+  agent any
   environment {
     ARGO_SERVER = '35.189.26.28:32484'
      DEV_URL = 'http://35.189.26.28:30080/'
@@ -16,7 +17,7 @@ pipeline {
       steps {
         container('maven') {
         sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh"
-        sh "/root/.spectral/spectral scan --ok --include-tags base,audit,iac"
+        sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit3,iac"
       }
     }
     }
