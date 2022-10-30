@@ -14,7 +14,7 @@ pipeline {
 stages {
     stage('install Spectral') {
       steps {
-        container('kaniko') {
+        container('alpine') {
        sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh" 
        sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit3,iac"
       }
