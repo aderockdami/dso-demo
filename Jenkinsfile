@@ -24,7 +24,7 @@ stages {
     stage('Spectral Deep Scan') {
       steps {
         container('maven') {
-        sh "spectral scan --ok --include-tags base,audit,iac"
+        sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit,iac"
       }
     }
     }
