@@ -14,10 +14,8 @@ pipeline {
 stages {
     stage('install Spectral') {
       steps {
-        container('alpine') {
-         sh "sudo apt update"
-         sh "sudo apt upgrade"
-         sh "sudo apt install curl"
+        container('maven') {
+ 
          sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh" 
          
       }
@@ -25,7 +23,7 @@ stages {
     }
     stage('Spectral Deep Scan') {
       steps {
-        container('alpine') {
+        container('maven') {
         sh "spectral scan --ok --include-tags base,audit,iac"
       }
     }
@@ -176,4 +174,3 @@ stages {
    }
   }
 }
-
