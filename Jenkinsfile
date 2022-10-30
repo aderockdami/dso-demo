@@ -15,14 +15,9 @@ pipeline {
     stage('install Spectral') {
       steps {
         sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh"
+        sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit,iac"
       }
     }
-    stage('Spectral deep Scan') {
-      steps {
-        sh "scan --ok --include-tags base,audit3,iac"
-      }
-    }
-    
     stage('Build') {
       parallel {
         stage('Compile') {
@@ -169,3 +164,4 @@ pipeline {
    }
   }
 }
+
