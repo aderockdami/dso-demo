@@ -14,7 +14,7 @@ spec:
         - name: m2
           mountPath: /root/.m2/
     - name: alpine
-      image: maven:alpine
+      image: ubuntu:latest
       command:
         - cat
       tty: true
