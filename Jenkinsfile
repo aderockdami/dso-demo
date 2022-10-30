@@ -24,7 +24,6 @@ stages {
     }
     stage('Spectral Deep Scan') {
       steps {
-        sh "sudo -s"
         sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit,iac"
     }
     }
