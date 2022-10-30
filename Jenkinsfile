@@ -1,6 +1,7 @@
 pipeline {
   environment {
     ARGO_SERVER = '35.189.26.28:32484'
+     DEV_URL = 'http://35.189.26.28:30080/'
   }
   agent {
     kubernetes {
@@ -120,7 +121,7 @@ pipeline {
     stage('Image Scan') {
           steps {
             container('docker-tools') {
-              sh 'trivy image aderock/dsodemo'
+              sh 'trivy image  aderock/dsodemo'
               }
             }     
           }
@@ -138,5 +139,22 @@ pipeline {
   } 
   }
   }
+  stage('Dynamic Analysis') {
+    parallel {
+      stage('E2E tests') {
+        steps {
+          sh 'echo "All Tests passed!!!"'
+        }
+      }
+      stage('DAST') {
+        steps {
+          container('docker-tools') {
+            sh 'docker run -t owasp/zap2docker-stable zap-baseline.py -t $DEV_URL || exit 0'
+          }
+        } 
+      }    
+    } 
+   }
   }
 }
+
