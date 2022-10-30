@@ -14,14 +14,11 @@ pipeline {
 stages {
     stage('install Spectral') {
       steps {
-       - sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh" 
-       - sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit3,iac"
+        container('kaniko') {
+       sh "curl -L 'https://get.spectralops.io/latest/x/sh?dsn=$SPECTRAL_DSN' | sh" 
+       sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit3,iac"
       }
     }
-    stage('scan for issues') {
-      steps {
-        sh "$HOME/.spectral/spectral scan --ok --include-tags base,audit3,iac"
-      }
     }
     stage('Build') {
       parallel {
