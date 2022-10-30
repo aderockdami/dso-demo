@@ -1,6 +1,7 @@
 pipeline {
   environment {
     ARGO_SERVER = '35.189.26.28:32484'
+  }
   agent {
     kubernetes {
       yamlFile 'build-agent.yaml'
